@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+// cambiar todo a task
+import { useState } from "react"
+import "../src/assets/styles/App.css"
+import InputField from "./components/input/InputField"
+import { Todo } from "./services/model"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todo, setTodo] = useState<string>("")
+  const [todos, setTodos] = useState<Todo[]>([])
+
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (todo) {
+      setTodos([...todos, { id: Date.now(), todo, isDone: false }])
+      setTodo("")
+    }
+  };
+
+  console.log(todos);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <div>
+      <span className="App">
+        {/*header*/}
+        <span className="heading">Project Manager</span>
 
-export default App
+        {/*input*/}
+        <InputField
+          todo={todo}
+          setTodo={setTodo}
+          handleAdd={handleAdd}
+        />
+
+        {/*task list*/}
+        {todos.map((t) => (
+          <li>{t.todo}</li>
+        ))}
+      </span>
+    </div>
+  );
+};
+
+export default App;
