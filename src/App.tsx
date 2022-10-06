@@ -2,6 +2,7 @@
 import { useState } from "react"
 import "../src/assets/styles/App.css"
 import InputField from "./components/input/InputField"
+import TodoList from "./components/TodoList/TodoList"
 import { Todo } from "./services/model"
 
 function App() {
@@ -32,9 +33,10 @@ function App() {
         />
 
         {/*task list*/}
-        {todos.map((t) => (
+        <TodoList todos={todos} setTodos={setTodos} />
+        {/* {todos.map((t) => (
           <li>{t.todo}</li>
-        ))}
+        ))} */}
       </span>
     </div>
   );
