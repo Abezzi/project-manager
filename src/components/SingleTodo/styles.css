@@ -1,0 +1,44 @@
+.todos__single {
+    display: flex;
+    width: 29.5%;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 15px;
+    background-color: var(--aqua);
+}
+
+.todos__single--text {
+    border: none;
+    text-shadow: 0px 1px 2px var(--black);
+    color: var(--black);
+    flex: 1;
+    font-size: 22px;
+    padding: 5px;
+}
+
+.todos__single--text:focus {
+    outline: none;
+}
+
+.icon {
+    margin-left: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    color: var(--black);
+}
+
+.icon:hover {
+    color: var(--gray);
+}
+
+@media (max-width: 700px) {
+    .input {
+        width: 95%;
+    }
+    .todos {
+        width: 95%;
+    }
+    .todos__single {
+        width: 100%;
+    }
+}
