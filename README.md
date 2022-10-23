@@ -29,3 +29,8 @@ cd project-manager
 npm run install
 npm run dev
 ```
+
+FAQ
+-------------
+Q: What did you use to make a the task drag and drop
+A: [react-beatiful-dnd](https://www.npmjs.com/package/react-beautiful-dnd)
