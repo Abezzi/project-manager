@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 import { Todo } from '../../services/model'
 import SingleTodo from '../SingleTodo/SingleTodo'
@@ -17,12 +17,14 @@ const TodoList: React.FC<Props> = ({
     completedTodos,
     setCompletedTodos
 }) => {
+    // need a prop with the columns ids, to use taht as droppeableId, like the index or key maybe
+
     return (
-        <div className="container">
-            <Droppable droppableId='TodosActiveList'>
-                {(provided) => (
+        < div className="container" >
+            <Droppable droppableId="TodosList">
+                {(provided, snapshot) => (
                     <div
-                        className="todos active"
+                        className={`todos active ${snapshot.isDraggingOver ? "dragactive" : ""}`}
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
@@ -45,10 +47,10 @@ const TodoList: React.FC<Props> = ({
                 )}
             </Droppable>
 
-            <Droppable droppableId='TodosCompletedList'>
-                {(provided) => (
+            <Droppable droppableId="TodosRemove">
+                {(provided, snapshot) => (
                     <div
-                        className="todos remove"
+                        className={`todos remove ${snapshot.isDraggingOver ? "dragremove" : ""}`}
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
@@ -70,7 +72,7 @@ const TodoList: React.FC<Props> = ({
                     </div>
                 )}
             </Droppable>
-        </div>
+        </div >
     )
 }
 

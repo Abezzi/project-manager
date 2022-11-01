@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import "./styles.css"
-import TodoList from '../TodoList/TodoList'
 
 interface Props {
     todo: string;

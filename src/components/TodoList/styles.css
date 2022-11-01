@@ -27,3 +27,11 @@
 .active {
     background-color: var(--aqua);
 }
+
+.dragactive {
+    background-color: var(--blue);
+}
+
+.dragremove {
+    background-color: var(--red);
+}
